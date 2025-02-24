@@ -7,6 +7,7 @@ import { useAccount, useSendTransaction } from 'wagmi';
 import { parseEther, isAddress } from 'viem';
 import { useState } from 'react';
 import { Address } from '@coinbase/onchainkit/identity';
+import { sendMessage } from '@/utils/messageUtils';
 
 // Fix 1: Correct props typing
 interface MessageInputProps {
