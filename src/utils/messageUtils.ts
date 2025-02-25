@@ -79,17 +79,18 @@ export const getMessages = async (
                     (tx.from === otherAddress && tx.to === address)) &&
                 tx.data && tx.data !== '0x'
             );
-
+        // console.log("transactions: ", blocks.map(block => block.transactions));
         // Convert to messages
         const messages: Message[] = transactions
             .map(tx => ({
                 from: tx.from,
-                to: tx.to!,
+                to: tx.to,
                 content: decodeMessage(tx.data),
                 timestamp: Number(tx.timestamp || Date.now() / 1000)
             }))
             .sort((a, b) => a.timestamp - b.timestamp);
 
+        console.log(messages);
         return messages;
     } catch (error) {
         console.error('Error fetching messages:', error);
